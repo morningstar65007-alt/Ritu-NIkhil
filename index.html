@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritu & Nikhil · the playful proposal</title>
+    <!-- font & icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: #fee9f0;
+            background-image: radial-gradient(circle at 30% 40%, #ffe5f1 0%, #ffd9e8 60%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            transition: background 0.2s;
+        }
+
+        /* ----- LOGIN PAGE (CARD) ----- */
+        .login-screen {
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 240, 245, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 50px;
+            border: 2px solid #ffffffcc;
+            box-shadow: 0 25px 50px -12px rgba(180, 80, 120, 0.5), 0 0 0 2px #fff8 inset;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .cartoon-characters {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 1.8rem 0 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .character {
+            text-align: center;
+            filter: drop-shadow(0 10px 8px #ffbfd5);
+            animation: bounce 2.5s infinite;
+        }
+        .character:nth-child(2) { animation-delay: 0.4s; }
+
+        @keyframes bounce {
+            0%,100%{ transform: translateY(0); }
+            50%{ transform: translateY(-12px); }
+        }
+
+        .character i {
+            font-size: 5rem;
+            color: #a54e70;
+            background: #fff0f5;
+            padding: 1.3rem;
+            border-radius: 60% 40% 50% 50%;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #cf859f;
+        }
+
+        .character span {
+            display: block;
+            margin-top: 0.5rem;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #7d3b54;
+            background: rgba(255,255,240,0.7);
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+        }
+
+        .login-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #b2406d, #dd6993);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0.5rem 0;
+        }
+
+        .suggest-message {
+            background: #ffdae9;
+            border-radius: 60px;
+            padding: 1rem 1.8rem;
+            font-size: 1.2rem;
+            color: #791e46;
+            border: 2px dashed #ff9ec0;
+            margin: 2rem 0 1.8rem;
+            font-family: 'Comic Neue', cursive;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .suggest-message i {
+            font-size: 2rem;
+            color: #cf5080;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .input-group {
+            background: white;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0.2rem 1.2rem;
+            border: 2px solid #ffbfd4;
+        }
+
+        .input-group i {
+            font-size: 1.3rem;
+            color: #b94b73;
+            width: 2rem;
+        }
+
+        .input-group input {
+            border: none;
+            padding: 1rem 0.5rem;
+            width: 100%;
+            font-size: 1.1rem;
+            background: transparent;
+            outline: none;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        .login-btn {
+            background: #ff99bb;
+            border: none;
+            border-radius: 60px;
+            padding: 1.2rem;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 0 #b33b65;
+            box-shadow: 0 8px 0 #b33b65;
+            cursor: pointer;
+            transition: 0.08s linear;
+            margin-top: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 2px solid #ffe3f0;
+        }
+
+        .login-btn:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #b33b65;
+        }
+
+        /* ----- PROPOSAL PAGE (surround game) ----- */
+        .proposal-container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(255, 250, 245, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 70px;
+            border: 2px solid white;
+            padding: 2rem 2rem 3rem;
+            box-shadow: 0 30px 50px #fbb0c8;
+            text-align: center;
+            position: relative;
+        }
+
+        .names-big {
+            font-size: 3.2rem;
+            font-family: 'Comic Neue', cursive;
+            font-weight: 700;
+            color: #a83562;
+            text-shadow: 4px 4px 0 #ffc1d4;
+        }
+
+        .proposal-question {
+            font-size: 2.4rem;
+            margin: 1rem 0 2rem;
+            background: #ffecf1;
+            padding: 1.2rem;
+            border-radius: 60px;
+            border: 3px solid white;
+            box-shadow: 0 8px 0 #e1a6bb;
+        }
+
+        /* floating yes/no all around */
+        .surround-buttons {
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin: 2rem 0 1rem;
+        }
+
+        .floating-btn {
+            position: absolute;
+            font-size: 1.9rem;
+            font-weight: bold;
+            padding: 1.2rem 2.4rem;
+            border: none;
+            border-radius: 50px;
+            background: white;
+            box-shadow: 0 10px 0 #bb7895, 0 0 0 3px #ffeef4;
+            color: #a53f68;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Comic Neue', cursive;
+            min-width: 140px;
+            justify-content: center;
+            border: 2px solid #ffdbea;
+            z-index: 5;
+        }
+
+        .floating-btn i {
+            font-size: 1.8rem;
+        }
+
+        .btn-yes {
+            background: #b3ffcf;
+            color: #1d7a46;
+            box-shadow: 0 10px 0 #2f7a4d, 0 0 0 3px #ccffdd;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+        }
+
+        .btn-no {
+            background: #ffc1c1;
+            color: #a12f2f;
+            box-shadow: 0 10px 0 #942828;
+        }
+
+        /* random scattered positions */
+        .pos1 { top: 0%; left: 5%; }
+        .pos2 { top: 10%; right: 2%; }
+        .pos3 { bottom: 15%; left: 15%; }
+        .pos4 { bottom: 0%; right: 20%; }
+        .pos5 { top: 20%; left: 30%; }
+        .pos6 { bottom: 25%; right: 5%; }
+        .pos7 { top: 40%; left: 70%; }
+        .pos8 { bottom: 5%; left: 45%; }
+        .pos9 { top: 70%; left: 10%; }
+        .pos10 { top: 80%; right: 15%; }
+
+        /* message box for try again / you lose */
+        .game-feedback {
+            margin-top: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Comic Neue', cursive;
+            background: #fff3f8;
+            padding: 1.2rem;
+            border-radius: 50px;
+            border: 3px dashed #ff87aa;
+            min-height: 6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .reset-area {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .reset-btn {
+            background: #ffd2df;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #932d55;
+            box-shadow: 0 5px 0 #d07da0;
+            cursor: pointer;
+            transition: 0.08s;
+            border: 2px solid white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .reset-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #d07da0;
+        }
+
+        /* lose / try again animation */
+        .shake {
+            animation: shake 0.4s ease;
+        }
+
+        @keyframes shake {
+            0%,100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            50% { transform: translateX(8px); }
+            75% { transform: translateX(-4px); }
+        }
+
+        .hidden-message {
+            display: none;
+        }
+
+        /* cartoon pointer */
+        .cartoon-arrow {
+            font-size: 3rem;
+            color: #b34e71;
+            filter: drop-shadow(2px 4px 0 white);
+        }
+    </style>
+</head>
+<body>
+    <!-- LOGIN PAGE with cartoon "go though" suggestion -->
+    <div id="loginPage" class="login-screen">
+        <div class="cartoon-characters">
+            <div class="character">
+                <i class="fas fa-heart"></i>
+                <span>Ritu</span>
+            </div>
+            <div class="character">
+                <i class="fas fa-gem"></i>
+                <span>Nikhil</span>
+            </div>
+        </div>
+        <h1 class="login-title">🔐 login for love</h1>
+        
+        <!-- cartoon go though suggestion box -->
+        <div class="suggest-message">
+            <i class="fas fa-arrow-right cartoon-arrow"></i>
+            <span> <strong>Go though</strong> and login 💬</span>
+            <i class="fas fa-arrow-left cartoon-arrow"></i>
+        </div>
+
+        <form id="loginForm" class="login-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="your name" value="Ritu" readonly>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="password (anything)" value="love">
+            </div>
+            <button type="submit" class="login-btn"><i class="fas fa-arrow-right-to-bracket"></i> enter</button>
+        </form>
+        <p style="margin-top: 1rem; color:#aa5779;"><i class="far fa-smile-wink"></i> just click login, it's for Ritu</p>
+    </div>
+
+    <!-- PROPOSAL PAGE with surrounding yes/no and game -->
+    <div id="proposalPage" class="proposal-container hidden">
+        <div class="names-big">
+            <span>Ritu 💖 Nikhil</span>
+        </div>
+        <div class="proposal-question">
+            will you marry me ?
+        </div>
+
+        <!-- SURROUNDING YES/NO BUTTONS (floating all around) -->
+        <div id="surroundArea" class="surround-buttons">
+            <!-- The stable YES at centre -->
+            <button class="floating-btn btn-yes" id="yesBtn"><i class="fas fa-heart"></i> YES</button>
+
+            <!-- Many NO buttons placed around the page (absolute positions) -->
+            <button class="floating-btn btn-no pos1" id="no1"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos2" id="no2"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos3" id="no3"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos4" id="no4"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos5" id="no5"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos6" id="no6"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos7" id="no7"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos8" id="no8"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos9" id="no9"><i class="fas fa-times"></i> no</button>
+            <button class="floating-btn btn-no pos10" id="no10"><i class="fas fa-times"></i> no</button>
+        </div>
+
+        <!-- feedback area : shows "try again" or "you lose" -->
+        <div id="gameFeedback" class="game-feedback">
+            <span id="feedbackText">❤️ click YES!</span>
+        </div>
+
+        <!-- reset button to reposition no's if needed (optional) -->
+        <div class="reset-area">
+            <button class="reset-btn" id="resetNoBtn"><i class="fas fa-rotate-left"></i> reset no's</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // ---- login handling ----
+            const loginPage = document.getElementById('loginPage');
+            const proposalPage = document.getElementById('proposalPage');
+            const loginForm = document.getElementById('loginForm');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();  // no actual auth
+                // simply show proposal
+                loginPage.classList.add('hidden');
+                proposalPage.classList.remove('hidden');
+                // reset any game state if needed (fresh start)
+                resetGameState();
+            });
+
+            // ---- proposal game logic (surround no / lose & try again) ----
+            const yesBtn = document.getElementById('yesBtn');
+            const noButtons = document.querySelectorAll('.btn-no');  // all no buttons
+            const feedbackText = document.getElementById('feedbackText');
+            const gameFeedbackDiv = document.getElementById('gameFeedback');
+            const resetBtn = document.getElementById('resetNoBtn');
+
+            // state for lose condition
+            let noClickCount = 0;
+            const maxLoseClicks = 3;   // after 3 no clicks → You lose
+
+            // also track if proposal accepted
+            let proposalAccepted = false;
+
+            // function to display feedback with optional styling
+            function setFeedback(msg, isLose = false, isTryAgain = false) {
+                feedbackText.innerText = msg;
+                gameFeedbackDiv.classList.remove('shake');
+                // force reflow to restart animation
+                void gameFeedbackDiv.offsetWidth;
+                if (isLose || isTryAgain) {
+                    gameFeedbackDiv.classList.add('shake');
+                }
+                // extra color change for lose
+                if (isLose) {
+                    gameFeedbackDiv.style.background = '#ffb3b3';
+                    gameFeedbackDiv.style.border = '4px solid #c04040';
+                } else if (isTryAgain) {
+                    gameFeedbackDiv.style.background = '#fff1cf';
+                    gameFeedbackDiv.style.border = '4px dashed #e5a341';
+                } else {
+                    gameFeedbackDiv.style.background = '#fff3f8';
+                    gameFeedbackDiv.style.border = '3px dashed #ff87aa';
+                }
+            }
+
+            // function when any NO is clicked
+            function onNoClick(event) {
+                if (proposalAccepted) return; // if already yes, ignore
+
+                const noBtn = event.currentTarget;
+
+                // increment click counter
+                noClickCount++;
+
+                // if noClickCount reaches maxLoseClicks -> you lose
+                if (noClickCount >= maxLoseClicks) {
+                    setFeedback('😵 YOU LOSE! (but Nikhil never gives up 💘)', true, false);
+                    // optionally freeze further no clicks? but we'll allow reset
+                    // we also reset noClickCount after showing you lose? we'll keep frozen until reset.
+                    // we set proposalAccepted to 'lose' mode? we can disable no buttons? but reset re-enables.
+                    disableNoButtons(true);  // visually disable? better add class
+                    noButtons.forEach(btn => {
+                        btn.style.opacity = '0.5';
+                        btn.disabled = true;   // actually disable so they can't click more
+                    });
+                    // also we can show try again via reset
+                    return;
+                }
+
+                // if not lost, show "try again" each time
+                setFeedback('🔄 try again!', false, true);
+
+                // make clicked no button run away? (we reposition it randomly within surround area)
+                const area = document.getElementById('surroundArea');
+                const rect = area.getBoundingClientRect();
+                if (rect.width > 100) {
+                    // random new percentage positions (relative to surround container)
+                    const newLeft = Math.random() * 70 + 5; // % left
+                    const newTop = Math.random() * 70 + 5;  // % top
+                    noBtn.style.left = newLeft + '%';
+                    noBtn.style.top = newTop + '%';
+                    noBtn.style.right = 'auto';
+                    noBtn.style.bottom = 'auto';
+                } else {
+                    // fallback: just assign one of pos classes?
+                }
+
+                // also wiggle the no button itself
+                noBtn.classList.add('shake');
+                setTimeout(() => noBtn.classList.remove('shake'), 400);
+            }
+
+            function disableNoButtons(disabled) {
+                noButtons.forEach(btn => {
+                    btn.disabled = disabled;
+                    if (disabled) {
+                        btn.style.pointerEvents = 'none';
+                        btn.style.opacity = '0.5';
+                    } else {
+                        btn.style.pointerEvents = 'auto';
+                        btn.style.opacity = '1';
+                    }
+                });
+            }
+
+            // reset game state (re-enable, reposition to default classes)
+            function resetGameState() {
+                proposalAccepted = false;
+                noClickCount = 0;
+                setFeedback('❤️ click YES!', false, false);
+                // enable all no buttons
+                noButtons.forEach(btn => {
+                    btn.disabled = false;
+                    btn.style.pointerEvents = 'auto';
+                    btn.style.opacity = '1';
+                    // reset to original position based on class
+                    // classList contains pos1, pos2 etc. we just reset style left/top
+                    btn.style.left = '';
+                    btn.style.top = '';
+                    btn.style.right = '';
+                    btn.style.bottom = '';
+                });
+                // also reset yes style
+                yesBtn.style.transform = '';
+                gameFeedbackDiv.style.background = '';
+                gameFeedbackDiv.style.border = '';
+            }
+
+            // yes button handler
+            yesBtn.addEventListener('click', function() {
+                if (proposalAccepted) return;
+                proposalAccepted = true;
+                setFeedback('✨ YES!! Ritu said YES! 💍 forever', false, false);
+                // disable all no buttons, they are irrelevant
+                disableNoButtons(true);
+                // fancy animation for yes
+                yesBtn.style.transform = 'scale(1.3)';
+                setTimeout(() => yesBtn.style.transform = 'scale(1)', 200);
+                // confetti-ish message
+                gameFeedbackDiv.style.background = '#d5ffd5';
+                gameFeedbackDiv.style.border = '4px solid #49a049';
+            });
+
+            // attach event to every no button
+            noButtons.forEach(btn => {
+                btn.addEventListener('click', onNoClick);
+            });
+
+            // reset button functionality
+            resetBtn.addEventListener('click', function() {
+                resetGameState();
+            });
+
+            // initial reset on page load for proposal (when login shown, proposal hidden but state fine)
+            function resetToStart() {
+                resetGameState();
+                // also put no buttons into their default positions (by clearing inline styles)
+                noButtons.forEach(btn => {
+                    btn.style.left = '';
+                    btn.style.top = '';
+                    btn.style.right = '';
+                    btn.style.bottom = '';
+                });
+            }
+
+            // optional: when login hidden, we reset
+            const observer = new MutationObserver(function(mutations) {
+                mutations.forEach(function(mutation) {
+                    if (mutation.attributeName === 'class') {
+                        if (proposalPage.classList.contains('hidden') === false) {
+                            // proposal just shown
+                            resetToStart();
+                        }
+                    }
+                });
+            });
+            observer.observe(proposalPage, { attributes: true });
+
+            // manually reset at start
+            resetToStart();
+
+            // if someone doubleclicks reset - just reset
+        })();
+    </script>
+    <!-- tiny note for github -->
+    <!-- full snippet: login with cartoon go though + surrounding YES/NO + try again / you lose mechanic -->
+</body>
+</html>

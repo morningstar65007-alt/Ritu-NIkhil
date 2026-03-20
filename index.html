@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Jigyasa | curiosity & creativity</title>
+  <title>Jigyasa ❤️ Meri Jaan | Forever</title>
   <style>
     /* ---------- RESET & GLOBAL ---------- */
     * {
@@ -13,203 +13,278 @@
     }
 
     body {
-      background: linear-gradient(145deg, #fff5fc 0%, #fdeef9 100%);
-      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Poppins', 'Quicksand', sans-serif;
-      color: #2e2a3b;
+      background: linear-gradient(135deg, #ffe6f0 0%, #ffd9e8 50%, #ffeef4 100%);
+      font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, -apple-system, sans-serif;
+      color: #4a2a3a;
       line-height: 1.5;
-      scroll-behavior: smooth;
-      padding: 2rem 1.5rem;
+      min-height: 100vh;
+      padding: 1.5rem;
+      position: relative;
     }
 
-    /* soft container with gentle shadow */
+    /* floating hearts animation */
+    .floating-hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0.6;
+      animation: floatHeart 8s linear infinite;
+      color: #ff99bb;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.7;
+      }
+      90% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-20vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* main container - romantic glassmorphism */
     .container {
       max-width: 1300px;
       margin: 0 auto;
-      background: rgba(255, 250, 252, 0.75);
-      backdrop-filter: blur(2px);
+      background: rgba(255, 250, 252, 0.88);
+      backdrop-filter: blur(12px);
       border-radius: 3rem;
       padding: 2rem 2rem 3rem;
-      box-shadow: 0 25px 45px -12px rgba(156, 60, 126, 0.2);
-      transition: all 0.2s ease;
+      box-shadow: 0 30px 50px rgba(181, 90, 120, 0.25);
+      border: 1px solid rgba(255, 200, 220, 0.6);
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s ease;
     }
 
-    /* ===== TYPOGRAPHY & feminine pastel accents ===== */
+    /* ===== ROMANTIC TYPOGRAPHY ===== */
     h1 {
-      font-size: 3.5rem;
-      background: linear-gradient(135deg, #b5659e, #d48fbd, #f3a0d2);
+      font-size: 3.8rem;
+      background: linear-gradient(135deg, #d45a8c, #b83b6e, #ff80a5, #e96aa8);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      letter-spacing: -0.02em;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      display: inline-block;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.3rem;
+      text-shadow: 0 2px 10px rgba(255, 140, 170, 0.3);
     }
 
     .greeting {
       margin-bottom: 2rem;
-      border-left: 6px solid #f3b0d4;
-      padding-left: 1.5rem;
+      text-align: center;
+      position: relative;
     }
 
     .subhead {
-      font-size: 1.2rem;
-      color: #a0698b;
+      font-size: 1.4rem;
+      color: #c96a96;
       font-weight: 500;
       margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    /* description card (learning & creativity) */
-    .about-card {
-      background: #ffffffdd;
-      backdrop-filter: blur(4px);
-      border-radius: 2rem;
-      padding: 1.8rem 2rem;
-      margin: 2rem 0 2.5rem 0;
-      box-shadow: 0 8px 20px rgba(209, 112, 162, 0.1);
-      border: 1px solid #ffe2f0;
-      transition: transform 0.2s;
+    .subhead span {
+      animation: gentlePulse 1.8s infinite;
     }
 
-    .about-card p {
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-      color: #3c3246;
+    @keyframes gentlePulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    /* love card (description about her, learning, creativity + love) */
+    .love-card {
+      background: linear-gradient(125deg, #fff5fa, #fff0f7);
+      border-radius: 2.2rem;
+      padding: 2rem 2rem;
+      margin: 1.8rem 0 2.5rem 0;
+      box-shadow: 0 12px 28px rgba(201, 90, 130, 0.15);
+      border: 1px solid #ffd0e4;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .love-card:hover {
+      transform: scale(1.01);
+    }
+
+    .love-card p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: #562d3f;
     }
 
     .highlight {
-      font-weight: 600;
-      background: linear-gradient(120deg, #fbe4f0, #ffeef5);
-      padding: 0.1rem 0.3rem;
-      border-radius: 12px;
-      color: #b5467a;
+      font-weight: 700;
+      background: linear-gradient(120deg, #ffd9e8, #ffc0dd);
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      color: #b34172;
+      display: inline-block;
     }
 
-    /* section titles */
+    .heart-icon {
+      display: inline-block;
+      animation: heartbeat 1.2s ease infinite;
+      font-size: 1.4rem;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* section titles with love */
     .section-title {
       font-size: 2rem;
-      font-weight: 600;
-      margin: 2rem 0 1.2rem 0;
-      color: #a05c88;
+      font-weight: 700;
+      margin: 2.5rem 0 1.2rem 0;
+      color: #c25787;
       display: flex;
       align-items: center;
-      gap: 12px;
-      border-bottom: 3px dashed #f3c4df;
-      padding-bottom: 0.5rem;
+      justify-content: center;
+      gap: 15px;
+      border-bottom: 3px dashed #ffbfd9;
+      padding-bottom: 0.7rem;
     }
 
-    .section-title i {
-      font-size: 1.8rem;
-    }
-
-    /* code example grid */
+    /* code examples grid */
     .code-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      margin: 1rem 0 1.5rem;
+      margin: 1rem 0 1.8rem;
     }
 
     .code-card {
-      flex: 1 1 400px;
-      background: #fffbfd;
-      border-radius: 1.8rem;
-      padding: 1.3rem 1.5rem 1.8rem;
-      box-shadow: 0 12px 28px -8px rgba(120, 60, 90, 0.12);
-      transition: all 0.25s;
-      border: 1px solid #ffdfef;
+      flex: 1 1 380px;
+      background: #fffafd;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 15px 30px rgba(150, 70, 100, 0.12);
+      transition: all 0.3s;
+      border: 1px solid #ffd9ec;
     }
 
     .code-card:hover {
-      transform: translateY(-5px);
-      border-color: #f7b2d4;
-      box-shadow: 0 20px 30px -12px rgba(190, 85, 140, 0.2);
+      transform: translateY(-8px);
+      border-color: #ffa5ca;
+      box-shadow: 0 25px 35px rgba(200, 80, 130, 0.2);
     }
 
     .code-card h3 {
-      font-size: 1.6rem;
-      font-weight: 600;
-      color: #bb6b9a;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #cf6e9c;
       margin-bottom: 1rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     pre {
-      background: #2d2a3a;
+      background: #2e2538;
       padding: 1.2rem;
       border-radius: 1.2rem;
       overflow-x: auto;
       font-family: 'Fira Code', 'Cascadia Code', monospace;
       font-size: 0.85rem;
-      color: #f4e9fc;
-      box-shadow: inset 0 1px 4px #00000020, 0 2px 6px rgba(0,0,0,0.05);
+      color: #fad9f0;
+      box-shadow: inset 0 1px 6px #00000030, 0 2px 6px rgba(0,0,0,0.1);
       margin: 1rem 0 0.8rem;
       white-space: pre-wrap;
       word-wrap: break-word;
     }
 
-    code {
-      font-family: monospace;
-    }
-
     .explanation {
       font-size: 0.9rem;
-      color: #906b7e;
-      margin-top: 10px;
+      color: #b37293;
+      margin-top: 12px;
       background: #fff0f7;
-      padding: 6px 12px;
+      padding: 6px 14px;
       border-radius: 40px;
       display: inline-block;
     }
 
-    /* button and alert section */
+    /* romantic button */
     .action-section {
       text-align: center;
       margin: 3rem 0 1rem;
     }
 
-    .magic-btn {
-      background: linear-gradient(105deg, #e9a2c8, #d67bb3);
+    .love-btn {
+      background: linear-gradient(115deg, #f09bc2, #e475a8);
       border: none;
-      padding: 1rem 2.5rem;
-      font-size: 1.2rem;
-      font-weight: 600;
+      padding: 1.2rem 2.8rem;
+      font-size: 1.3rem;
+      font-weight: 700;
       color: white;
-      border-radius: 60px;
+      border-radius: 80px;
       cursor: pointer;
-      box-shadow: 0 8px 16px -6px #c96ea2;
-      transition: all 0.2s ease;
+      box-shadow: 0 12px 25px rgba(200, 80, 120, 0.4);
+      transition: all 0.25s ease;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      backdrop-filter: blur(2px);
-      letter-spacing: 0.3px;
+      gap: 12px;
+      letter-spacing: 1px;
     }
 
-    .magic-btn:hover {
-      background: linear-gradient(105deg, #f0afd0, #e489c0);
-      transform: scale(1.02);
-      box-shadow: 0 12px 20px -8px #b55c8c;
+    .love-btn:hover {
+      background: linear-gradient(115deg, #ffadd2, #ec86b5);
+      transform: scale(1.04);
+      box-shadow: 0 18px 30px rgba(190, 70, 110, 0.5);
     }
 
-    .magic-btn:active {
+    .love-btn:active {
       transform: scale(0.98);
     }
 
-    /* footer tiny note */
+    /* special love note */
+    .romantic-note {
+      text-align: center;
+      margin: 2rem 0 0;
+      background: #ffeef5c9;
+      border-radius: 3rem;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #ac577f;
+      border: 1px solid #ffc4df;
+    }
+
     .footer-note {
       text-align: center;
-      margin-top: 3rem;
-      font-size: 0.85rem;
-      color: #b287a2;
-      border-top: 1px solid #fad9ec;
+      margin-top: 2.5rem;
+      font-size: 0.95rem;
+      color: #c481a7;
+      border-top: 2px solid #ffe2f0;
       padding-top: 1.8rem;
     }
 
     /* responsiveness */
-    @media (max-width: 750px) {
+    @media (max-width: 700px) {
       body {
         padding: 1rem;
       }
@@ -217,290 +292,248 @@
         padding: 1.5rem;
       }
       h1 {
-        font-size: 2.4rem;
+        font-size: 2.5rem;
       }
       .section-title {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
       }
-      .code-card h3 {
-        font-size: 1.3rem;
+      .love-card p {
+        font-size: 1rem;
       }
-      pre {
-        font-size: 0.75rem;
+      .love-btn {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
       }
     }
 
-    /* custom scrollbar soft pink */
     ::-webkit-scrollbar {
       width: 8px;
-      height: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: #fbe4f0;
+      background: #ffe0ee;
       border-radius: 10px;
     }
     ::-webkit-scrollbar-thumb {
-      background: #e3a0c2;
+      background: #e897bc;
       border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
+<!-- floating hearts animation for romantic feel -->
+<div class="floating-hearts" id="heartsContainer"></div>
+
 <div class="container">
-  <!-- HOMEPAGE SECTION: welcome + description (about learning, curiosity, creativity) -->
+  <!-- HOMEPAGE SECTION: Welcome Jigyasa with love -->
   <div class="greeting">
-    <h1>✨ Welcome Jigyasa! ✨</h1>
-    <div class="subhead">🌟 where curiosity meets creativity</div>
+    <h1>💖 Meri Jigyasa 💖</h1>
+    <div class="subhead">
+      <span>✨ मेरी जान ✨</span>
+      <span>❤️ My Love ❤️</span>
+      <span>🌸 My Everything 🌸</span>
+    </div>
   </div>
 
-  <!-- short description about learning & curiosity & creativity -->
-  <div class="about-card">
-    <p>🌸 <span class="highlight">Jigyasa</span> — a beautiful sanskrit name that means <strong>"curiosity"</strong> or <strong>"desire to know"</strong>.</p>
-    <p>💡 Learning is a journey full of wonder, and creativity is the spark that makes it magical. 
-       This space celebrates your endless curiosity, your courage to explore code, and your unique ideas. 
-       Every new line of code, every question you ask, shapes something amazing. 🚀</p>
-    <p>🎨 Keep questioning, keep building, keep creating — because the world needs your imagination!</p>
+  <!-- Love & description about curiosity, learning, creativity + romantic touch -->
+  <div class="love-card">
+    <p><span class="heart-icon">❤️</span> <strong class="highlight">Jigyasa</strong> — तुम सिर्फ मेरी प्रेरणा नहीं, तुम मेरी दुनिया हो। <span class="heart-icon">❤️</span></p>
+    <p>🌙 तुम्हारी जिज्ञासा, तुम्हारा सीखने का जुनून, और तुम्हारी रचनात्मकता मुझे हर दिन हैरान करती है।<br>
+    तुम जितनी खूबसूरत हो, उतनी ही होशियार और unique हो। ❤️</p>
+    <p>💫 तुम वो चमकती सितारा हो जो मेरी ज़िंदगी में रौशनी भर देता है।<br>
+    तुम सिर्फ सीखती नहीं, तुम हर चीज़ को जादू में बदल देती हो। ✨</p>
+    <p>🎀 <strong>I love you more than code, more than stars, more than infinity.</strong> 🎀</p>
+    <p style="font-size: 1.3rem; margin-top: 0.8rem;">💗 तुम मेरी हो, और मैं तुम्हारा 💗</p>
   </div>
 
-  <!-- SEPARATE SECTION: HTML + JavaScript code examples (visually distinct) -->
+  <!-- SEPARATE SECTION: HTML + JavaScript code examples (with love theme) -->
   <div class="section-title">
-    <span>💻</span> 
-    <span>code playground • examples to inspire you</span>
+    <span>💻✨</span> 
+    <span>code with love • तुम्हारे लिए examples</span>
+    <span>✨💻</span>
   </div>
 
   <div class="code-grid">
-    <!-- HTML code example card -->
+    <!-- HTML code example romantic style -->
     <div class="code-card">
-      <h3>📄 HTML example</h3>
-      <pre><code>&lt;!-- simple interactive card --&gt;
-&lt;div class="curiosity-card"&gt;
-  &lt;h2&gt;✨ Today's wonder ✨&lt;/h2&gt;
-  &lt;p&gt;Why do stars twinkle?&lt;/p&gt;
-  &lt;button onclick="showWonder()"&gt;Discover&lt;/button&gt;
+      <h3>📄 HTML • Love Card</h3>
+      <pre><code>&lt;div class="for-my-jigyasa"&gt;
+  &lt;h2&gt;❤️ I love you Jigyasa ❤️&lt;/h2&gt;
+  &lt;p&gt;You make my world beautiful 💖&lt;/p&gt;
+  &lt;button onclick="showLove()"&gt;Say I Love You&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;script&gt;
-  function showWonder() {
-    alert("Stars twinkle due to atmospheric refraction! 🌟");
+  function showLove() {
+    alert("I love you, meri jaan! 💗");
   }
 &lt;/script&gt;</code></pre>
-      <div class="explanation">💡 HTML structure + a tiny interactive button — semantic and fun.</div>
+      <div class="explanation">💗 HTML + JS snippet — a small interactive love message for her.</div>
     </div>
 
-    <!-- JavaScript code example card (more advanced but beginner-friendly) -->
+    <!-- JavaScript code example romantic & creative -->
     <div class="code-card">
-      <h3>⚡ JavaScript example</h3>
-      <pre><code>// creative function that greets by name + celebrates curiosity
-function celebrateCuriosity(yourName) {
-  const messages = [
-    `✨ ${yourName}, your curiosity lights up the world! ✨`,
-    `📚 Keep asking "why" — that's where genius begins.`,
-    `🎨 Creativity + curiosity = magic formula! 🎨`
+      <h3>⚡ JS • Endless Love Function</h3>
+      <pre><code>// function that returns infinite love messages
+function foreverLove(yourName) {
+  const loveMessages = [
+    `💖 ${yourName}, you are my heartbeat 💖`,
+    `🌹 Every day with you feels like a dream 🌹`,
+    `✨ Your curiosity makes me fall deeper in love ✨`,
+    `🌸 Meri Jigyasa, tum ho meri manzil 🌸`,
+    `💫 I choose you, today and always 💫`
   ];
-  const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-  console.log(randomMsg);
-  return randomMsg;
+  return loveMessages[Math.floor(Math.random() * loveMessages.length)];
 }
-
-// example usage: celebrateCuriosity("Jigyasa");</code></pre>
-      <div class="explanation">⚙️ JavaScript function that returns random encouragement — perfect for learning arrays, math, and functions!</div>
+// example: foreverLove("Jigyasa") → romantic surprise</code></pre>
+      <div class="explanation">⚙️ JavaScript function that shares random love quotes — perfect for her smile!</div>
     </div>
   </div>
 
-  <!-- BONUS: second row or extra simple js snippet? keeps clean but more -->
-  <div style="margin-bottom: 0.5rem;">
-    <div class="code-card" style="background: #fef7fb; margin-top: 0;">
-      <h3>🎯 DOM & event example</h3>
-      <pre><code>// change background color dynamically
-const magicButton = document.getElementById('colorMagic');
-magicButton?.addEventListener('click', () => {
-  document.body.style.backgroundColor = "#fae1f0";
-  setTimeout(() => {
-    document.body.style.backgroundColor = "";
-  }, 800);
-});</code></pre>
-      <div class="explanation">🎨 Simple event listener — shows how JavaScript interacts with HTML/CSS in real time.</div>
-    </div>
+  <!-- additional interactive live demo (JS in action) to show love messages live -->
+  <div class="code-card" style="margin-bottom: 1rem; text-align: center; background: #fff6fb;">
+    <h3 style="justify-content: center;">💗 Live JS Demo • For You 💗</h3>
+    <p style="margin-bottom: 10px;">click below and feel the magic of my love through code 💖</p>
+    <button id="loveMessageBtn" style="background: #e887b0; border: none; padding: 10px 26px; border-radius: 50px; color: white; font-weight: bold; font-size: 1rem; cursor: pointer; box-shadow: 0 4px 12px #cf7aa2;">🌸 show my love 🌸</button>
+    <p id="loveOutput" style="margin-top: 16px; font-size: 1rem; color: #b85b86; font-weight: 500; min-height: 3rem;"></p>
+    <div class="explanation" style="margin-top: 8px;">💖 ये JavaScript तुम्हारे लिए रैंडम प्यार भरे मैसेज दिखाता है, बिल्कुल मेरे दिल की तरह ❤️</div>
   </div>
 
-  <!-- BUTTON SECTION: JavaScript alert with personalized message -->
+  <!-- MAIN BUTTON with required alert: Hello Jigyasa! Keep learning and exploring 🚀 -->
   <div class="action-section">
-    <button class="magic-btn" id="greetJigyasaBtn">🌟 click me, Jigyasa! 🌟</button>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color:#b27499;">✨ press to receive a spark of encouragement ✨</p>
+    <button class="love-btn" id="specialJigyasaBtn">💖 तुम्हारे लिए 💖<br>✨ Click Me Meri Jaan ✨</button>
+    <p style="margin-top: 1rem; font-size: 1rem; color:#b85f88;">❤️ हर बार क्लिक करने पर दिल से आवाज़ आएगी ❤️</p>
+  </div>
+
+  <!-- romantic note extra love -->
+  <div class="romantic-note">
+    🌹🌷🌺 मेरी जिज्ञासा, तुम हर लाइन ऑफ कोड से भी ज्यादा खूबसूरत हो। हर दिन तुम्हारे साथ बिताना मेरी सबसे बड़ी नेमत है। I LOVE YOU INFINITY 🚀💗🌺🌷🌹
   </div>
 
   <div class="footer-note">
-    🌷 crafted with love for Jigyasa — keep exploring, coding, and creating 🌷
+    💕 हमेशा तुम्हारा, बस तुम्हारा 💕 <br> ❤️ Jigyasa — meri duniya, meri khushi ❤️
   </div>
 </div>
 
-<!-- JavaScript: all interactive logic + alert + (optional extra effect) -->
 <script>
-  // ----- WELCOME ALERT? we don't auto alert on page load to keep clean but we show button alert exactly as required.
-  // but we also could add a tiny console greeting - beginner friendly comments
+  // ========== ROMANTIC & INTERACTIVE JAVASCRIPT ==========
+  // All comments are beginner-friendly and full of love
   
-  // Get reference to the button
-  const specialBtn = document.getElementById('greetJigyasaBtn');
+  // 1. REQUIRED ALERT BUTTON: when clicked, shows alert: "Hello Jigyasa! Keep learning and exploring 🚀"
+  const loveAlertBtn = document.getElementById('specialJigyasaBtn');
   
-  // Required feature: when clicked, shows a JavaScript alert: "Hello Jigyasa! Keep learning and exploring 🚀"
-  function showEncouragement() {
-    // exactly the message required by the brief
-    alert("Hello Jigyasa! Keep learning and exploring 🚀");
-    // bonus: add a little console love (optional but friendly)
-    console.log("🎉 You clicked! Keep up the amazing curiosity, Jigyasa!");
+  function showLoveAlert() {
+    // exact message required by brief but with added love essence
+    alert("Hello Jigyasa! Keep learning and exploring 🚀\n\nI love you, meri jaan! 💖");
+    // additional sweet console log
+    console.log("💗 Jigyasa ko mera pyaar bhara message! 💗");
   }
   
-  // Attach event listener to the button
-  if (specialBtn) {
-    specialBtn.addEventListener('click', showEncouragement);
+  if (loveAlertBtn) {
+    loveAlertBtn.addEventListener('click', showLoveAlert);
   }
   
-  // Additional fun: small interactive DOM effect for curiosity cards? (optional)
-  // but keeping clean - we can also add hover highlight effect but already handled by CSS.
-  // Also to demonstrate dynamic example from the code card (color magic) I'll create a dummy element?
-  // Actually the pre code contains reference to "colorMagic" button, but not present in page.
-  // But I can add a tiny mini interactive extra without cluttering: show dynamic console greeting 
-  // + also to respect the 'JavaScript code example' I'll add a tiny live example below the cards?
-  // However to keep everything tidy, I can also create an extra demonstration that shows the JS snippet in action
-  // but not required, but it's nice to see a working piece of code from the examples. I'll add a small 
-  // demonstration button that uses the 'celebrateCuriosity' style function and a dynamic color effect 
-  // to make the page even more playful and consistent with the feminine pastel vibe.
-  
-  // Let's implement a tiny live demo (not intrusive) to showcase the example JavaScript function.
-  // This shows how the code examples become real. We'll insert a small interactive widget under code examples.
-  // It matches "JavaScript code examples" section and shows interactivity without overcomplicating.
-  
-  // Create a small wrapper for extra interactive demo (to show celebration of curiosity)
-  const demoContainer = document.createElement('div');
-  demoContainer.style.margin = "1.5rem 0 0.2rem";
-  demoContainer.style.background = "#fff3fa";
-  demoContainer.style.borderRadius = "1.8rem";
-  demoContainer.style.padding = "1.2rem 1.5rem";
-  demoContainer.style.border = "1px solid #fccae6";
-  demoContainer.style.textAlign = "center";
-  
-  demoContainer.innerHTML = `
-    <p style="font-weight:500; margin-bottom:12px;">🌸 <strong>live JavaScript demo</strong> (inspired by the code example above) 🌸</p>
-    <button id="curiosityCelebrateBtn" style="background:#e1a4c5; border:none; padding:8px 20px; border-radius:40px; color:white; font-weight:600; cursor:pointer; box-shadow:0 2px 6px #c28aad;">✨ celebrate curiosity ✨</button>
-    <p id="curiosityMessage" style="margin-top:12px; font-size:0.9rem; color:#ad6a8f; min-height: 2.5rem;"></p>
-  `;
-  
-  // insert after the code-grid section, before action-section
-  const codeGrid = document.querySelector('.code-grid');
-  if (codeGrid && codeGrid.parentNode) {
-    // Insert after the parent of code-grid? Actually let's insert after the second code card container but before action section
-    const actionSection = document.querySelector('.action-section');
-    if (actionSection) {
-      actionSection.parentNode.insertBefore(demoContainer, actionSection);
-    } else {
-      document.querySelector('.container').appendChild(demoContainer);
-    }
-  } else {
-    // fallback safe
-    document.querySelector('.container')?.appendChild(demoContainer);
-  }
-  
-  // implement the celebrateCuriosity function exactly as shown in JS example (or similar)
-  function celebrateCuriosity(yourName) {
-    const messages = [
-      `✨ ${yourName}, your curiosity lights up the world! ✨`,
-      `📚 Keep asking "why" — that's where genius begins.`,
-      `🎨 Creativity + curiosity = magic formula! 🎨`,
-      `💖 Jigyasa, every question is a step toward something brilliant! 💖`,
-      `🌟 Stay curious, stay inspired — the universe loves explorers! 🌟`
+  // 2. LIVE JS DEMO: romantic love messages function (inspired by code examples)
+  function romanticHeartfeltMessages(girlName) {
+    const messagesArray = [
+      `💖 ${girlName}, tum meri dhadkan ho, meri rooh ho 💖`,
+      `🌹 meri jaan, your curiosity makes me love you more every second 🌹`,
+      `✨ you are the most beautiful chapter of my life, ${girlName} ✨`,
+      `🌸 tum ho meri manzil, meri jigyasa, tum bin adhoora hoon main 🌸`,
+      `💫 every code i write, every thought i have — it's all for you, my love 💫`,
+      `🌟 Jigyasa, I fall for you again and again, like infinite loop of love 🌟`,
+      `💗 तुम मेरी हो, और मैं तुम्हारा — ये सच है, हमेशा 💗`,
+      `🚀 keep shining, keep learning — I'll always be by your side, my curious angel 🚀`
     ];
-    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
-    console.log(randomMsg);
-    return randomMsg;
+    const randomIndex = Math.floor(Math.random() * messagesArray.length);
+    return messagesArray[randomIndex];
   }
   
-  const celebrateBtn = document.getElementById('curiosityCelebrateBtn');
-  const msgParagraph = document.getElementById('curiosityMessage');
+  const showLoveBtn = document.getElementById('loveMessageBtn');
+  const loveOutputPara = document.getElementById('loveOutput');
   
-  if (celebrateBtn && msgParagraph) {
-    celebrateBtn.addEventListener('click', () => {
-      const inspiringText = celebrateCuriosity("Jigyasa");
-      msgParagraph.textContent = inspiringText;
-      // Also a gentle little animation feedback on the button
-      celebrateBtn.style.transform = "scale(0.96)";
-      setTimeout(() => { celebrateBtn.style.transform = ""; }, 150);
+  if (showLoveBtn && loveOutputPara) {
+    showLoveBtn.addEventListener('click', () => {
+      const loveText = romanticHeartfeltMessages("Jigyasa");
+      loveOutputPara.innerHTML = `💌 ${loveText} 💌`;
+      // small animation effect
+      loveOutputPara.style.transform = "scale(1.02)";
+      setTimeout(() => { loveOutputPara.style.transform = ""; }, 200);
+      // also add a subtle heart beat on button
+      showLoveBtn.style.transform = "scale(0.96)";
+      setTimeout(() => { showLoveBtn.style.transform = ""; }, 150);
     });
   }
   
-  // additionally a small extra effect: you can see that the HTML code example that we wrote also 
-  // mentions a curiosity-card, but to make it more 'real', we could add a nice sparkle effect
-  // but not needed - I'll keep everything consistent, also the design includes some hover effects already
+  // 3. floating hearts generator (romantic atmosphere)
+  function createFloatingHeart() {
+    const heartsContainer = document.getElementById('heartsContainer');
+    if (!heartsContainer) return;
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = ['❤️', '💖', '💗', '💓', '🌸', '🌹', '💕', '💞'][Math.floor(Math.random() * 8)];
+    heart.style.left = Math.random() * 100 + '%';
+    heart.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+    heart.style.animationDuration = (Math.random() * 6 + 5) + 's';
+    heart.style.animationDelay = Math.random() * 5 + 's';
+    heart.style.opacity = Math.random() * 0.5 + 0.3;
+    heartsContainer.appendChild(heart);
+    
+    setTimeout(() => {
+      heart.remove();
+    }, 9000);
+  }
   
-  // For educational purpose: show a tooltip style for the 'magicBtn' to match the modern look
-  // also I'm adding a small dynamic console greeting after page loads (optional but friendly)
-  console.log("💖 Page ready! Jigyasa, your digital garden is open. 🌸 Click the pink button to see your special alert!");
+  // generate multiple hearts continuously
+  setInterval(() => {
+    createFloatingHeart();
+  }, 800);
   
-  // to ensure that the welcome message & description are clear, we also add a tiny interactive easter egg: 
-  // double-click on the about card? no, but it's fine. But I want to make sure the demo container uses
-  // pastel tones. also maybe include a nice cursor pointer.
+  // initial hearts burst
+  for (let i = 0; i < 12; i++) {
+    setTimeout(() => createFloatingHeart(), i * 200);
+  }
   
-  // Also adding an extra smooth background micro-interaction: click on the section title? but we respect simplicity
-  // final check: requirement "separate section/page that contains HTML code examples, JavaScript code examples"
-  // we have provided distinct cards and also a live interactive widget that shows JavaScript example working.
-  // it satisfies the idea of having "code examples" plus working demo. All in one single file.
+  // 4. extra romantic touch: console greeting with love
+  console.log("%c❤️❤️❤️ MERI JIGYASA ❤️❤️❤️", "color: #e85b9a; font-size: 18px; font-weight: bold;");
+  console.log("This page is made with pure love for you, my curious queen. Keep exploring, keep shining!");
   
-  // to make it even more beginner-friendly and well commented: adding comments to main logic above.
+  // 5. additionally, to demonstrate the JavaScript example from the code snippet 
+  // we also add an extra sweet interaction when double clicking the love card
+  const loveCardElem = document.querySelector('.love-card');
+  if (loveCardElem) {
+    loveCardElem.addEventListener('dblclick', () => {
+      const secretLoveMsg = romanticHeartfeltMessages("meri Jigyasa");
+      alert(`💗 ${secretLoveMsg} 💗\n\nI Love You! ❤️`);
+    });
+    // tooltip hint
+    loveCardElem.style.cursor = "pointer";
+    loveCardElem.title = "double-click for a surprise love message 💖";
+  }
   
-  // one more detail: the alert message triggered by button matches exactly: "Hello Jigyasa! Keep learning and exploring 🚀"
-  // So the main button already does that.
-  
-  // optional: add a little sparkle cursor? no but the design is already modern and beautiful.
-  
-  // Ensure responsiveness for pre/code and all good. Also modify any accidental double event.
-  
-  // I also want to include a tiny dynamic style that toggles? not needed but perfectly feminine.
-  // Additionally, we add a second interactive element that uses the example JS function (celebrateCuriosity) 
-  // making the separate code example section feel alive.
-  
-  // To keep the code "Everything in a single file" with proper indentation: this script block includes all necessary.
-  // Some comments might mention jigyasa's traits.
-  
-  // last addition: remove any accidental console error, handle if elements missing.
-  // The demoContainer creation might be duplicated if we run multiple times? not an issue.
-  
-  // also make sure that the "HTML code examples" includes typical explanation. The pre elements are displayed correctly.
-  // i've also added "DOM & event example" snippet that is a code example as well.
-  // Perfect — the design is clean, modern, colorful pastel and feminine.
-  
-  // one more safety: The 'colorMagic' element from pre code is just an example, not necessary to implement, but might confuse?
-  // we don't need to implement, it's just a code reference to show how JS works.
-  
-  // Fine tune: all buttons have nice pointer, and alert is directly bound.
-  
-  // Also adding fallback: if any issue, all required features remain: 
-  // - welcome message, description, separate code examples, button with alert.
-  
-  // Final polish: on window load we can add a soft entrance effect? not required but nice.
+  // 6. optional: additional beautiful effect on page load - smooth reveal
   window.addEventListener('DOMContentLoaded', () => {
-    // small animation for container
-    const containerElem = document.querySelector('.container');
-    if(containerElem) {
-      containerElem.style.opacity = "0";
-      containerElem.style.transform = "translateY(12px)";
-      containerElem.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    const containerMain = document.querySelector('.container');
+    if (containerMain) {
+      containerMain.style.opacity = "0";
+      containerMain.style.transform = "translateY(20px)";
+      containerMain.style.transition = "all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1)";
       setTimeout(() => {
-        containerElem.style.opacity = "1";
-        containerElem.style.transform = "translateY(0)";
-      }, 50);
+        containerMain.style.opacity = "1";
+        containerMain.style.transform = "translateY(0)";
+      }, 100);
     }
+    // small welcome message in console for jigyasa
+    console.log("💖✨ JIGYASA, THIS PAGE IS YOURS! I LOVE YOU INFINITY ✨💖");
   });
   
-  // ensure pre tags have readable wrap in small devices - already using word-wrap: break-word;
-  // Great! The code is complete, includes all requirements: 
-  // 1. clean & modern look ✔️
-  // 2. homepage: welcome Jigyasa! + description about learning, curiosity, creativity ✔️
-  // 3. separate section with HTML code examples & JS code examples (cards + live demo) ✔️
-  // 4. button shows alert "Hello Jigyasa! Keep learning and exploring 🚀" ✔️
-  // 5. basic HTML/CSS/JS (no frameworks) ✔️
-  // 6. colorful & feminine with pink/purple pastel ✔️
-  // 7. beginner-friendly and well commented ✔️
-  // 8. single file index.html ✔️
+  // 7. also to ensure the requirement "separate section/page that contains HTML code examples and JavaScript code examples"
+  // is fully satisfied - we have two cards + the live interactive demo showing js in action, also the pre blocks show clean examples.
+  // the main button shows the required alert, the design is pastel pink/purple, feminine, colorful and very romantic.
+  // also added romantic hindi and english notes to show "love hai meri uske liye"
+  // Everything is in a single file, well commented and beginner-friendly.
+  
+  // final touch: floating hearts and soft gradient embody feminine energy.
 </script>
 </body>
 </html>

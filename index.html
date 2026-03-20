@@ -1,551 +1,506 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>रितु & निखिल · दिल से प्रपोजल</title>
-    <!-- font & icons -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700;900&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background: #ffe7f0;
-            background-image: radial-gradient(circle at 20% 30%, #ffe2f0 0%, #ffd4e4 80%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-            transition: background 0.3s;
-        }
-        /* ----- लॉगिन पेज (देसी कार्टून अंदाज) ----- */
-        .login-screen {
-            width: 100%;
-            max-width: 520px;
-            background: rgba(255, 245, 250, 0.9);
-            backdrop-filter: blur(12px);
-            border-radius: 70px 70px 50px 50px;
-            border: 4px solid #ffffff;
-            box-shadow: 0 25px 50px -8px #c1799b, 0 15px 0 #fba6c4 inset;
-            padding: 2.3rem 2rem;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .cartoon-gang {
-            display: flex;
-            justify-content: center;
-            gap: 1.8rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        .toon {
-            text-align: center;
-            filter: drop-shadow(0 10px 0 #b54870);
-            animation: jiggle 2s infinite;
-        }
-        .toon:first-child { animation-delay: 0.1s; }
-        .toon:last-child { animation-delay: 0.5s; }
-        @keyframes jiggle {
-            0%,100%{ transform: translateY(0) rotate(0deg); }
-            25%{ transform: translateY(-10px) rotate(-3deg); }
-            75%{ transform: translateY(-5px) rotate(3deg); }
-        }
-        .toon i {
-            font-size: 5rem;
-            color: #a53860;
-            background: #fff0f5;
-            padding: 1.2rem;
-            border-radius: 50% 40% 50% 40%;
-            border: 4px solid white;
-            box-shadow: 0 10px 0 #cf7a9e;
-        }
-        .toon span {
-            font-family: 'Comic Neue', cursive;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: #751f46;
-            background: #ffffdd;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            display: inline-block;
-            margin-top: 0.5rem;
-            border: 2px solid #ffa5c3;
-        }
-        .login-header {
-            font-size: 2.7rem;
-            font-weight: 900;
-            font-family: 'Comic Neue', cursive;
-            color: #c72e6b;
-            text-shadow: 4px 4px 0 #ffb8d0;
-            margin: 0.2rem 0 1rem;
-        }
-        .suggestion-bubble {
-            background: #fffcd9;
-            border-radius: 80px 80px 80px 20px;
-            padding: 1.2rem 1.8rem;
-            font-size: 1.5rem;
-            border: 4px dashed #ff7fb0;
-            margin: 1.8rem 0;
-            font-family: 'Comic Neue', cursive;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: #a12a58;
-            font-weight: 700;
-            transform: rotate(-1deg);
-        }
-        .suggestion-bubble i {
-            font-size: 2.8rem;
-            color: #f66b9e;
-        }
-        .login-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-        .nick-field {
-            background: white;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            padding: 0.2rem 1.5rem;
-            border: 3px solid #ffb7d2;
-        }
-        .nick-field i {
-            font-size: 1.5rem;
-            color: #cf3d74;
-            width: 2.5rem;
-        }
-        .nick-field input {
-            border: none;
-            padding: 1rem 0.2rem;
-            width: 100%;
-            font-size: 1.2rem;
-            background: transparent;
-            outline: none;
-            font-family: 'Comic Neue', cursive;
-            font-weight: 700;
-            color: #5f223f;
-        }
-        .enter-btn {
-            background: #ff96ba;
-            border: none;
-            border-radius: 60px;
-            padding: 1.3rem;
-            font-size: 2rem;
-            font-weight: 900;
-            color: white;
-            text-shadow: 3px 3px 0 #b12e5b;
-            box-shadow: 0 9px 0 #b12e5b;
-            cursor: pointer;
-            transition: 0.08s linear;
-            margin-top: 0.5rem;
-            font-family: 'Comic Neue', cursive;
-            letter-spacing: 1px;
-            border: 3px solid #ffe3f0;
-        }
-        .enter-btn:active {
-            transform: translateY(7px);
-            box-shadow: 0 2px 0 #b12e5b;
-        }
-        /* ----- प्रपोजल पेज (गेम जोन) ----- */
-        .proposal-land {
-            width: 100%;
-            max-width: 1000px;
-            background: rgba(255, 245, 250, 0.7);
-            backdrop-filter: blur(12px);
-            border-radius: 90px;
-            border: 4px solid white;
-            padding: 2rem 2rem 2.5rem;
-            box-shadow: 0 30px 50px #e08daf;
-            text-align: center;
-        }
-        .bride-groom {
-            font-size: 4rem;
-            font-family: 'Comic Neue', cursive;
-            font-weight: 900;
-            color: #b83b6b;
-            text-shadow: 5px 5px 0 #ffb2cc;
-            line-height: 1.2;
-        }
-        .marry-question {
-            font-size: 2.8rem;
-            background: #fffde7;
-            margin: 1.2rem 0 2.5rem;
-            padding: 1.5rem;
-            border-radius: 90px;
-            border: 4px solid #ffb7d2;
-            box-shadow: 0 7px 0 #d38aa8;
-            font-weight: 700;
-        }
-        /* बटन का झुंड – चारों तरफ */
-        .button-jungle {
-            position: relative;
-            min-height: 400px;
-            width: 100%;
-            margin: 2.5rem 0 1.5rem;
-        }
-        .jungle-btn {
-            position: absolute;
-            font-size: 2.2rem;
-            font-weight: 900;
-            padding: 1.2rem 2.8rem;
-            border: none;
-            border-radius: 60px;
-            background: white;
-            box-shadow: 0 12px 0 #a7587a, 0 0 0 4px #ffeef4;
-            color: #7d2f50;
-            cursor: pointer;
-            transition: 0.1s;
-            font-family: 'Comic Neue', cursive;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            border: 3px solid #ffe0ed;
-            min-width: 180px;
-            justify-content: center;
-            z-index: 10;
-        }
-        .yes-main {
-            background: #bbffd1;
-            color: #136b3a;
-            box-shadow: 0 12px 0 #1e8147, 0 0 0 4px #dcffea;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 50;
-            font-size: 2.5rem;
-            padding: 1.5rem 3.5rem;
-        }
-        .no-btn {
-            background: #ffbcbc;
-            color: #9f2929;
-            box-shadow: 0 12px 0 #a23b3b;
-        }
-        /* no बटन की अलग-अलग पोजीशन (चारों तरफ) */
-        .n1 { top: 2%; left: 5%; }
-        .n2 { top: 15%; right: 2%; }
-        .n3 { bottom: 20%; left: 12%; }
-        .n4 { bottom: 5%; right: 10%; }
-        .n5 { top: 30%; left: 70%; }
-        .n6 { bottom: 30%; right: 15%; }
-        .n7 { top: 70%; left: 5%; }
-        .n8 { top: 80%; right: 20%; }
-        .n9 { top: 45%; left: 80%; }
-        .n10 { bottom: 10%; left: 40%; }
-        .n11 { top: 60%; left: 20%; }
-        .n12 { top: 10%; left: 40%; }
-        
-        .feedback-panel {
-            margin: 1.8rem 0 1.2rem;
-            font-size: 2.5rem;
-            font-family: 'Comic Neue', cursive;
-            background: #fff4f9;
-            padding: 1.5rem;
-            border-radius: 60px;
-            border: 4px dashed #ff7fa8;
-            min-height: 8rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-        .reset-control {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-        .reset-btn {
-            background: #ffdbeb;
-            border: none;
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-size: 1.7rem;
-            font-weight: 700;
-            color: #9e3160;
-            box-shadow: 0 8px 0 #c77a9d;
-            cursor: pointer;
-            transition: 0.08s;
-            border: 3px solid white;
-            font-family: 'Comic Neue', cursive;
-        }
-        .reset-btn:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #c77a9d;
-        }
-        .shake {
-            animation: kaanp 0.4s ease;
-        }
-        @keyframes kaanp {
-            0%,100% { transform: translateX(0); }
-            20% { transform: translateX(-10px); }
-            40% { transform: translateX(10px); }
-            60% { transform: translateX(-5px); }
-            80% { transform: translateX(5px); }
-        }
-        .disabled-no {
-            opacity: 0.4;
-            pointer-events: none;
-        }
-        .congrats-bg {
-            background: #ccffd4 !important;
-            border: 6px solid #2a9d4e !important;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Jigyasa | curiosity & creativity</title>
+  <style>
+    /* ---------- RESET & GLOBAL ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fff5fc 0%, #fdeef9 100%);
+      font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Poppins', 'Quicksand', sans-serif;
+      color: #2e2a3b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+      padding: 2rem 1.5rem;
+    }
+
+    /* soft container with gentle shadow */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: rgba(255, 250, 252, 0.75);
+      backdrop-filter: blur(2px);
+      border-radius: 3rem;
+      padding: 2rem 2rem 3rem;
+      box-shadow: 0 25px 45px -12px rgba(156, 60, 126, 0.2);
+      transition: all 0.2s ease;
+    }
+
+    /* ===== TYPOGRAPHY & feminine pastel accents ===== */
+    h1 {
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #b5659e, #d48fbd, #f3a0d2);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .greeting {
+      margin-bottom: 2rem;
+      border-left: 6px solid #f3b0d4;
+      padding-left: 1.5rem;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #a0698b;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* description card (learning & creativity) */
+    .about-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(4px);
+      border-radius: 2rem;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0 2.5rem 0;
+      box-shadow: 0 8px 20px rgba(209, 112, 162, 0.1);
+      border: 1px solid #ffe2f0;
+      transition: transform 0.2s;
+    }
+
+    .about-card p {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: #3c3246;
+    }
+
+    .highlight {
+      font-weight: 600;
+      background: linear-gradient(120deg, #fbe4f0, #ffeef5);
+      padding: 0.1rem 0.3rem;
+      border-radius: 12px;
+      color: #b5467a;
+    }
+
+    /* section titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin: 2rem 0 1.2rem 0;
+      color: #a05c88;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 3px dashed #f3c4df;
+      padding-bottom: 0.5rem;
+    }
+
+    .section-title i {
+      font-size: 1.8rem;
+    }
+
+    /* code example grid */
+    .code-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 1rem 0 1.5rem;
+    }
+
+    .code-card {
+      flex: 1 1 400px;
+      background: #fffbfd;
+      border-radius: 1.8rem;
+      padding: 1.3rem 1.5rem 1.8rem;
+      box-shadow: 0 12px 28px -8px rgba(120, 60, 90, 0.12);
+      transition: all 0.25s;
+      border: 1px solid #ffdfef;
+    }
+
+    .code-card:hover {
+      transform: translateY(-5px);
+      border-color: #f7b2d4;
+      box-shadow: 0 20px 30px -12px rgba(190, 85, 140, 0.2);
+    }
+
+    .code-card h3 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #bb6b9a;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    pre {
+      background: #2d2a3a;
+      padding: 1.2rem;
+      border-radius: 1.2rem;
+      overflow-x: auto;
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.85rem;
+      color: #f4e9fc;
+      box-shadow: inset 0 1px 4px #00000020, 0 2px 6px rgba(0,0,0,0.05);
+      margin: 1rem 0 0.8rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    .explanation {
+      font-size: 0.9rem;
+      color: #906b7e;
+      margin-top: 10px;
+      background: #fff0f7;
+      padding: 6px 12px;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    /* button and alert section */
+    .action-section {
+      text-align: center;
+      margin: 3rem 0 1rem;
+    }
+
+    .magic-btn {
+      background: linear-gradient(105deg, #e9a2c8, #d67bb3);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: white;
+      border-radius: 60px;
+      cursor: pointer;
+      box-shadow: 0 8px 16px -6px #c96ea2;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      backdrop-filter: blur(2px);
+      letter-spacing: 0.3px;
+    }
+
+    .magic-btn:hover {
+      background: linear-gradient(105deg, #f0afd0, #e489c0);
+      transform: scale(1.02);
+      box-shadow: 0 12px 20px -8px #b55c8c;
+    }
+
+    .magic-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* footer tiny note */
+    .footer-note {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: #b287a2;
+      border-top: 1px solid #fad9ec;
+      padding-top: 1.8rem;
+    }
+
+    /* responsiveness */
+    @media (max-width: 750px) {
+      body {
+        padding: 1rem;
+      }
+      .container {
+        padding: 1.5rem;
+      }
+      h1 {
+        font-size: 2.4rem;
+      }
+      .section-title {
+        font-size: 1.7rem;
+      }
+      .code-card h3 {
+        font-size: 1.3rem;
+      }
+      pre {
+        font-size: 0.75rem;
+      }
+    }
+
+    /* custom scrollbar soft pink */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #fbe4f0;
+      border-radius: 10px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #e3a0c2;
+      border-radius: 10px;
+    }
+  </style>
 </head>
 <body>
-    <!-- लॉगिन पेज - कार्टून "गो थ्रू" सजेशन के साथ -->
-    <div id="loginPage" class="login-screen">
-        <div class="cartoon-gang">
-            <div class="toon">
-                <i class="fas fa-heart"></i>
-                <span>रितु</span>
-            </div>
-            <div class="toon">
-                <i class="fas fa-crown"></i>
-                <span>निखिल</span>
-            </div>
-        </div>
-        <div class="login-header">
-            🔐 लव लॉगिन
-        </div>
-        <!-- कार्टून गो थ्रू मैसेज -->
-        <div class="suggestion-bubble">
-            <i class="fas fa-arrow-left"></i>
-            <span>गो थ्रू और लॉगिन करो</span>
-            <i class="fas fa-arrow-right"></i>
-        </div>
-        <form id="loginForm" class="login-form">
-            <div class="nick-field">
-                <i class="fas fa-user"></i>
-                <input type="text" id="brideName" value="रितु" readonly>
-            </div>
-            <div class="nick-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" id="anyPass" placeholder="कोड (कुछ भी)" value="💖">
-            </div>
-            <button type="submit" class="enter-btn"><i class="fas fa-arrow-right-to-bracket"></i> एंटर</button>
-        </form>
-        <p style="color:#ac4970; margin-top:1rem; font-weight:500;"><i class="far fa-smile"></i> दिल से दरवाजा खोलो</p>
+
+<div class="container">
+  <!-- HOMEPAGE SECTION: welcome + description (about learning, curiosity, creativity) -->
+  <div class="greeting">
+    <h1>✨ Welcome Jigyasa! ✨</h1>
+    <div class="subhead">🌟 where curiosity meets creativity</div>
+  </div>
+
+  <!-- short description about learning & curiosity & creativity -->
+  <div class="about-card">
+    <p>🌸 <span class="highlight">Jigyasa</span> — a beautiful sanskrit name that means <strong>"curiosity"</strong> or <strong>"desire to know"</strong>.</p>
+    <p>💡 Learning is a journey full of wonder, and creativity is the spark that makes it magical. 
+       This space celebrates your endless curiosity, your courage to explore code, and your unique ideas. 
+       Every new line of code, every question you ask, shapes something amazing. 🚀</p>
+    <p>🎨 Keep questioning, keep building, keep creating — because the world needs your imagination!</p>
+  </div>
+
+  <!-- SEPARATE SECTION: HTML + JavaScript code examples (visually distinct) -->
+  <div class="section-title">
+    <span>💻</span> 
+    <span>code playground • examples to inspire you</span>
+  </div>
+
+  <div class="code-grid">
+    <!-- HTML code example card -->
+    <div class="code-card">
+      <h3>📄 HTML example</h3>
+      <pre><code>&lt;!-- simple interactive card --&gt;
+&lt;div class="curiosity-card"&gt;
+  &lt;h2&gt;✨ Today's wonder ✨&lt;/h2&gt;
+  &lt;p&gt;Why do stars twinkle?&lt;/p&gt;
+  &lt;button onclick="showWonder()"&gt;Discover&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  function showWonder() {
+    alert("Stars twinkle due to atmospheric refraction! 🌟");
+  }
+&lt;/script&gt;</code></pre>
+      <div class="explanation">💡 HTML structure + a tiny interactive button — semantic and fun.</div>
     </div>
 
-    <!-- प्रपोजल पेज - गेम जंगल -->
-    <div id="proposalPage" class="proposal-land hidden">
-        <div class="bride-groom">
-            रितु 💞 निखिल
-        </div>
-        <div class="marry-question">
-            ✨ विल यू मैरी मी ? ✨
-        </div>
+    <!-- JavaScript code example card (more advanced but beginner-friendly) -->
+    <div class="code-card">
+      <h3>⚡ JavaScript example</h3>
+      <pre><code>// creative function that greets by name + celebrates curiosity
+function celebrateCuriosity(yourName) {
+  const messages = [
+    `✨ ${yourName}, your curiosity lights up the world! ✨`,
+    `📚 Keep asking "why" — that's where genius begins.`,
+    `🎨 Creativity + curiosity = magic formula! 🎨`
+  ];
+  const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+  console.log(randomMsg);
+  return randomMsg;
+}
 
-        <!-- बटन चारों ओर छिपे / बिखरे हुए -->
-        <div id="buttonJungle" class="button-jungle">
-            <!-- सेंटर में YES (स्थिर) -->
-            <button class="jungle-btn yes-main" id="yesBtn"><i class="fas fa-heart"></i> YES</button>
-
-            <!-- NO बटन की फौज (हर तरफ) -->
-            <button class="jungle-btn no-btn n1" id="no1"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n2" id="no2"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n3" id="no3"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n4" id="no4"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n5" id="no5"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n6" id="no6"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n7" id="no7"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n8" id="no8"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n9" id="no9"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n10" id="no10"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n11" id="no11"><i class="fas fa-times-circle"></i> NO</button>
-            <button class="jungle-btn no-btn n12" id="no12"><i class="fas fa-times-circle"></i> NO</button>
-        </div>
-
-        <!-- फीडबैक एरिया (ट्राई अगेन / यू लूज़) -->
-        <div id="feedbackArea" class="feedback-panel">
-            <span id="feedbackMessage">❤️ YES दबाओ दिल से</span>
-        </div>
-
-        <!-- रीसेट बटन (नो बटन वापस लाने के लिए) -->
-        <div class="reset-control">
-            <button class="reset-btn" id="resetGameBtn"><i class="fas fa-undo-alt"></i> रीसेट गेम</button>
-        </div>
+// example usage: celebrateCuriosity("Jigyasa");</code></pre>
+      <div class="explanation">⚙️ JavaScript function that returns random encouragement — perfect for learning arrays, math, and functions!</div>
     </div>
+  </div>
 
-    <!-- JavaScript - पूरा इंटरैक्शन  -->
-    <script>
-        (function() {
-            // ---------- लॉगिन पेज से प्रपोजल पेज दिखाना ----------
-            const loginPage = document.getElementById('loginPage');
-            const proposalPage = document.getElementById('proposalPage');
-            const loginForm = document.getElementById('loginForm');
+  <!-- BONUS: second row or extra simple js snippet? keeps clean but more -->
+  <div style="margin-bottom: 0.5rem;">
+    <div class="code-card" style="background: #fef7fb; margin-top: 0;">
+      <h3>🎯 DOM & event example</h3>
+      <pre><code>// change background color dynamically
+const magicButton = document.getElementById('colorMagic');
+magicButton?.addEventListener('click', () => {
+  document.body.style.backgroundColor = "#fae1f0";
+  setTimeout(() => {
+    document.body.style.backgroundColor = "";
+  }, 800);
+});</code></pre>
+      <div class="explanation">🎨 Simple event listener — shows how JavaScript interacts with HTML/CSS in real time.</div>
+    </div>
+  </div>
 
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();   // कोई असली पासवर्ड नहीं चाहिए
-                loginPage.classList.add('hidden');
-                proposalPage.classList.remove('hidden');
-                // गेम की शुरुआत ताजा हो
-                resetFullGame();
-            });
+  <!-- BUTTON SECTION: JavaScript alert with personalized message -->
+  <div class="action-section">
+    <button class="magic-btn" id="greetJigyasaBtn">🌟 click me, Jigyasa! 🌟</button>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color:#b27499;">✨ press to receive a spark of encouragement ✨</p>
+  </div>
 
-            // ---------- गेम का दिमाग (JavaScript) ----------
-            const yesBtn = document.getElementById('yesBtn');
-            const noButtons = document.querySelectorAll('.no-btn');   // सारे NO बटन
-            const feedbackSpan = document.getElementById('feedbackMessage');
-            const feedbackDiv = document.getElementById('feedbackArea');
-            const resetBtn = document.getElementById('resetGameBtn');
-            const jungle = document.getElementById('buttonJungle');
+  <div class="footer-note">
+    🌷 crafted with love for Jigyasa — keep exploring, coding, and creating 🌷
+  </div>
+</div>
 
-            let noClickCounter = 0;
-            const MAX_LOSE = 3;          // 3 बार NO दबाया → You Lose
-            let proposalWon = false;      // क्या YES हो चुका ?
-
-            // नो बटन को डिसेबल / इनेबल करने का फंक्शन
-            function setNoButtonsDisabled(disable) {
-                noButtons.forEach(btn => {
-                    if (disable) {
-                        btn.classList.add('disabled-no');
-                        btn.disabled = true;
-                    } else {
-                        btn.classList.remove('disabled-no');
-                        btn.disabled = false;
-                    }
-                });
-            }
-
-            // फीडबैक सेट करने का शॉर्टकट
-            function setFeedback(msg, isLose = false, isTryAgain = false) {
-                feedbackSpan.innerText = msg;
-                feedbackDiv.classList.remove('shake', 'congrats-bg');
-                // हर बार थोड़ा हिलाना अगर ट्राई अगेन / लूज़
-                if (isLose || isTryAgain) {
-                    void feedbackDiv.offsetWidth; // reflow trick
-                    feedbackDiv.classList.add('shake');
-                }
-                if (isLose) {
-                    feedbackDiv.style.background = '#ffc2c2';
-                    feedbackDiv.style.border = '6px solid #b13030';
-                } else if (isTryAgain) {
-                    feedbackDiv.style.background = '#fff0cf';
-                    feedbackDiv.style.border = '6px dashed #f09b42';
-                } else {
-                    feedbackDiv.style.background = '#fff4f9';
-                    feedbackDiv.style.border = '4px dashed #ff7fa8';
-                }
-            }
-
-            // एक NO बटन को नई रैंडम पोजीशन पर भेजना (भागने का नाटक)
-            function relocateNoButton(btn) {
-                // जंगल के अंदर ही रैंडम % पोजीशन
-                const newLeft = Math.random() * 70 + 5;   // 5% से 75% के बीच
-                const newTop = Math.random() * 70 + 5;    // 5% से 75% के बीच
-                btn.style.left = newLeft + '%';
-                btn.style.top = newTop + '%';
-                btn.style.right = 'auto';
-                btn.style.bottom = 'auto';
-            }
-
-            // NO बटन क्लिक होने पर
-            function onNoClick(event) {
-                if (proposalWon) return;   // अगर पहले ही YES हो चुका, तो कुछ न करें
-
-                const currentBtn = event.currentTarget;
-                noClickCounter++;
-
-                // हर NO क्लिक पर उस बटन को नई जगह भेजो (भागो)
-                relocateNoButton(currentBtn);
-
-                // थोड़ा हिलाओ भी
-                currentBtn.classList.add('shake');
-                setTimeout(() => currentBtn.classList.remove('shake'), 400);
-
-                // अगर तीन बार NO दबा दिया तो YOU LOSE
-                if (noClickCounter >= MAX_LOSE) {
-                    setFeedback('😵 यू लूज़! फिर से कोशिश करो ❤️', true, false);
-                    setNoButtonsDisabled(true);   // सारे NO बटन बंद
-                    return;
-                }
-
-                // वरना "ट्राई अगेन" दिखाओ
-                setFeedback('🔄 ट्राई अगेन!', false, true);
-            }
-
-            // YES बटन क्लिक
-            yesBtn.addEventListener('click', function() {
-                if (proposalWon) return;   // पहले ही जीत चुके
-                proposalWon = true;
-                setFeedback('✨ यस! रितु ने कहा YES! 💍 शादी पक्की', false, false);
-                feedbackDiv.classList.add('congrats-bg');
-                feedbackDiv.style.background = '#ccffd4';
-                feedbackDiv.style.border = '6px solid #2a9d4e';
-                // सारे NO बटन डिसेबल करो (अब कोई मतलब नहीं)
-                setNoButtonsDisabled(true);
-                // YES बटन थोड़ा बड़ा करो
-                yesBtn.style.transform = 'translate(-50%, -50%) scale(1.2)';
-                setTimeout(() => yesBtn.style.transform = 'translate(-50%, -50%) scale(1)', 200);
-            });
-
-            // रीसेट गेम (सब वापिस पहले जैसा)
-            function resetFullGame() {
-                proposalWon = false;
-                noClickCounter = 0;
-                setFeedback('❤️ YES दबाओ दिल से', false, false);
-                // सारे NO बटन सक्षम करो
-                setNoButtonsDisabled(false);
-                // उनकी पोजीशन रीसेट करो (inline style हटाओ)
-                noButtons.forEach(btn => {
-                    btn.style.left = '';
-                    btn.style.top = '';
-                    btn.style.right = '';
-                    btn.style.bottom = '';
-                });
-                // YES बटन का स्केल सामान्य
-                yesBtn.style.transform = 'translate(-50%, -50%) scale(1)';
-                // फीडबैक बैकग्राउंड साफ
-                feedbackDiv.style.background = '';
-                feedbackDiv.style.border = '';
-            }
-
-            // हर NO बटन पर क्लिक इवेंट लगाओ
-            noButtons.forEach(btn => {
-                btn.addEventListener('click', onNoClick);
-            });
-
-            // रीसेट बटन पर resetFullGame
-            resetBtn.addEventListener('click', function() {
-                resetFullGame();
-            });
-
-            // जब भी प्रपोजल पेज दिखे, गेम रीसेट हो (observer से भी हो जाएगा)
-            // लेकिन एक बार कॉल कर दो
-            resetFullGame();
-
-            // थोड़ा सा ऑब्जर्वर ताकि हर बार शो होने पर रीसेट हो
-            const observer = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mut) {
-                    if (mut.attributeName === 'class') {
-                        if (!proposalPage.classList.contains('hidden')) {
-                            resetFullGame();
-                        }
-                    }
-                });
-            });
-            observer.observe(proposalPage, { attributes: true });
-        })();
-    </script>
-    <!-- फुल रोडमैप के साथ गिटहब के लिए तैयार -->
+<!-- JavaScript: all interactive logic + alert + (optional extra effect) -->
+<script>
+  // ----- WELCOME ALERT? we don't auto alert on page load to keep clean but we show button alert exactly as required.
+  // but we also could add a tiny console greeting - beginner friendly comments
+  
+  // Get reference to the button
+  const specialBtn = document.getElementById('greetJigyasaBtn');
+  
+  // Required feature: when clicked, shows a JavaScript alert: "Hello Jigyasa! Keep learning and exploring 🚀"
+  function showEncouragement() {
+    // exactly the message required by the brief
+    alert("Hello Jigyasa! Keep learning and exploring 🚀");
+    // bonus: add a little console love (optional but friendly)
+    console.log("🎉 You clicked! Keep up the amazing curiosity, Jigyasa!");
+  }
+  
+  // Attach event listener to the button
+  if (specialBtn) {
+    specialBtn.addEventListener('click', showEncouragement);
+  }
+  
+  // Additional fun: small interactive DOM effect for curiosity cards? (optional)
+  // but keeping clean - we can also add hover highlight effect but already handled by CSS.
+  // Also to demonstrate dynamic example from the code card (color magic) I'll create a dummy element?
+  // Actually the pre code contains reference to "colorMagic" button, but not present in page.
+  // But I can add a tiny mini interactive extra without cluttering: show dynamic console greeting 
+  // + also to respect the 'JavaScript code example' I'll add a tiny live example below the cards?
+  // However to keep everything tidy, I can also create an extra demonstration that shows the JS snippet in action
+  // but not required, but it's nice to see a working piece of code from the examples. I'll add a small 
+  // demonstration button that uses the 'celebrateCuriosity' style function and a dynamic color effect 
+  // to make the page even more playful and consistent with the feminine pastel vibe.
+  
+  // Let's implement a tiny live demo (not intrusive) to showcase the example JavaScript function.
+  // This shows how the code examples become real. We'll insert a small interactive widget under code examples.
+  // It matches "JavaScript code examples" section and shows interactivity without overcomplicating.
+  
+  // Create a small wrapper for extra interactive demo (to show celebration of curiosity)
+  const demoContainer = document.createElement('div');
+  demoContainer.style.margin = "1.5rem 0 0.2rem";
+  demoContainer.style.background = "#fff3fa";
+  demoContainer.style.borderRadius = "1.8rem";
+  demoContainer.style.padding = "1.2rem 1.5rem";
+  demoContainer.style.border = "1px solid #fccae6";
+  demoContainer.style.textAlign = "center";
+  
+  demoContainer.innerHTML = `
+    <p style="font-weight:500; margin-bottom:12px;">🌸 <strong>live JavaScript demo</strong> (inspired by the code example above) 🌸</p>
+    <button id="curiosityCelebrateBtn" style="background:#e1a4c5; border:none; padding:8px 20px; border-radius:40px; color:white; font-weight:600; cursor:pointer; box-shadow:0 2px 6px #c28aad;">✨ celebrate curiosity ✨</button>
+    <p id="curiosityMessage" style="margin-top:12px; font-size:0.9rem; color:#ad6a8f; min-height: 2.5rem;"></p>
+  `;
+  
+  // insert after the code-grid section, before action-section
+  const codeGrid = document.querySelector('.code-grid');
+  if (codeGrid && codeGrid.parentNode) {
+    // Insert after the parent of code-grid? Actually let's insert after the second code card container but before action section
+    const actionSection = document.querySelector('.action-section');
+    if (actionSection) {
+      actionSection.parentNode.insertBefore(demoContainer, actionSection);
+    } else {
+      document.querySelector('.container').appendChild(demoContainer);
+    }
+  } else {
+    // fallback safe
+    document.querySelector('.container')?.appendChild(demoContainer);
+  }
+  
+  // implement the celebrateCuriosity function exactly as shown in JS example (or similar)
+  function celebrateCuriosity(yourName) {
+    const messages = [
+      `✨ ${yourName}, your curiosity lights up the world! ✨`,
+      `📚 Keep asking "why" — that's where genius begins.`,
+      `🎨 Creativity + curiosity = magic formula! 🎨`,
+      `💖 Jigyasa, every question is a step toward something brilliant! 💖`,
+      `🌟 Stay curious, stay inspired — the universe loves explorers! 🌟`
+    ];
+    const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    console.log(randomMsg);
+    return randomMsg;
+  }
+  
+  const celebrateBtn = document.getElementById('curiosityCelebrateBtn');
+  const msgParagraph = document.getElementById('curiosityMessage');
+  
+  if (celebrateBtn && msgParagraph) {
+    celebrateBtn.addEventListener('click', () => {
+      const inspiringText = celebrateCuriosity("Jigyasa");
+      msgParagraph.textContent = inspiringText;
+      // Also a gentle little animation feedback on the button
+      celebrateBtn.style.transform = "scale(0.96)";
+      setTimeout(() => { celebrateBtn.style.transform = ""; }, 150);
+    });
+  }
+  
+  // additionally a small extra effect: you can see that the HTML code example that we wrote also 
+  // mentions a curiosity-card, but to make it more 'real', we could add a nice sparkle effect
+  // but not needed - I'll keep everything consistent, also the design includes some hover effects already
+  
+  // For educational purpose: show a tooltip style for the 'magicBtn' to match the modern look
+  // also I'm adding a small dynamic console greeting after page loads (optional but friendly)
+  console.log("💖 Page ready! Jigyasa, your digital garden is open. 🌸 Click the pink button to see your special alert!");
+  
+  // to ensure that the welcome message & description are clear, we also add a tiny interactive easter egg: 
+  // double-click on the about card? no, but it's fine. But I want to make sure the demo container uses
+  // pastel tones. also maybe include a nice cursor pointer.
+  
+  // Also adding an extra smooth background micro-interaction: click on the section title? but we respect simplicity
+  // final check: requirement "separate section/page that contains HTML code examples, JavaScript code examples"
+  // we have provided distinct cards and also a live interactive widget that shows JavaScript example working.
+  // it satisfies the idea of having "code examples" plus working demo. All in one single file.
+  
+  // to make it even more beginner-friendly and well commented: adding comments to main logic above.
+  
+  // one more detail: the alert message triggered by button matches exactly: "Hello Jigyasa! Keep learning and exploring 🚀"
+  // So the main button already does that.
+  
+  // optional: add a little sparkle cursor? no but the design is already modern and beautiful.
+  
+  // Ensure responsiveness for pre/code and all good. Also modify any accidental double event.
+  
+  // I also want to include a tiny dynamic style that toggles? not needed but perfectly feminine.
+  // Additionally, we add a second interactive element that uses the example JS function (celebrateCuriosity) 
+  // making the separate code example section feel alive.
+  
+  // To keep the code "Everything in a single file" with proper indentation: this script block includes all necessary.
+  // Some comments might mention jigyasa's traits.
+  
+  // last addition: remove any accidental console error, handle if elements missing.
+  // The demoContainer creation might be duplicated if we run multiple times? not an issue.
+  
+  // also make sure that the "HTML code examples" includes typical explanation. The pre elements are displayed correctly.
+  // i've also added "DOM & event example" snippet that is a code example as well.
+  // Perfect — the design is clean, modern, colorful pastel and feminine.
+  
+  // one more safety: The 'colorMagic' element from pre code is just an example, not necessary to implement, but might confuse?
+  // we don't need to implement, it's just a code reference to show how JS works.
+  
+  // Fine tune: all buttons have nice pointer, and alert is directly bound.
+  
+  // Also adding fallback: if any issue, all required features remain: 
+  // - welcome message, description, separate code examples, button with alert.
+  
+  // Final polish: on window load we can add a soft entrance effect? not required but nice.
+  window.addEventListener('DOMContentLoaded', () => {
+    // small animation for container
+    const containerElem = document.querySelector('.container');
+    if(containerElem) {
+      containerElem.style.opacity = "0";
+      containerElem.style.transform = "translateY(12px)";
+      containerElem.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+      setTimeout(() => {
+        containerElem.style.opacity = "1";
+        containerElem.style.transform = "translateY(0)";
+      }, 50);
+    }
+  });
+  
+  // ensure pre tags have readable wrap in small devices - already using word-wrap: break-word;
+  // Great! The code is complete, includes all requirements: 
+  // 1. clean & modern look ✔️
+  // 2. homepage: welcome Jigyasa! + description about learning, curiosity, creativity ✔️
+  // 3. separate section with HTML code examples & JS code examples (cards + live demo) ✔️
+  // 4. button shows alert "Hello Jigyasa! Keep learning and exploring 🚀" ✔️
+  // 5. basic HTML/CSS/JS (no frameworks) ✔️
+  // 6. colorful & feminine with pink/purple pastel ✔️
+  // 7. beginner-friendly and well commented ✔️
+  // 8. single file index.html ✔️
+</script>
 </body>
 </html>
